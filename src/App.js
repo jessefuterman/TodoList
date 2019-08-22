@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Users from "./Users";
+
 import { Checkbox } from 'semantic-ui-react'
+import Groups from "./Groups";
 
 
 class App extends Component {
@@ -51,7 +52,7 @@ class App extends Component {
    
      this.onChange()
      this.setState({ selectedOption: event.target.value });
-     console.log(event.target.value, "what is event target")
+     console.log(this.state.selectedOption, "what is selected option")
    
    
   };
@@ -123,7 +124,7 @@ console.log("we gettin in latin?")
   listLogic = () => {
     //  let del = this.state.users.filter(x => x !== str);
     let mapOne = this.state.users.map(elem => (
-      <ul>
+      <li className = "listLine">
         {elem}
 
           
@@ -140,7 +141,7 @@ console.log("we gettin in latin?")
        <option value='Add to House Heads' onChange={(event) => {this.handleChange(event,elem)}}>Add to House Heads</option>
 
        </select>
-      </ul>
+      </li>
     ));
 
     return mapOne;
@@ -150,7 +151,7 @@ console.log("we gettin in latin?")
     return (
       <div className="NameList">
         <div>
-          <Users passingUsers={this.state.users}  passingPushed={this.state.pushedUser} passingOption = {this.state.selectedOption} />
+          <Groups passingUsers={this.state.users}  passingPushedUsers={this.state.pushedUser} passingGroup = {this.state.selectedOption} />
           <h4 className="App">Music Fans Unite</h4>
         </div>
         <div>

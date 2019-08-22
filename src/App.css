@@ -72,6 +72,12 @@
   transform: translateX(-50%) translateY(-50%);
   border-radius: 20px;  }
 
+  .listLine {
+  margin: 20px;
+
+
+  }
+
   .Users {
     text-align: center;
 
