@@ -2,18 +2,17 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-import { Checkbox } from 'semantic-ui-react'
+import { Checkbox } from "semantic-ui-react";
 import Groups from "./Groups";
-
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     text: "",
-      selectedOption: "",
+      text: "",
+      selectedOption: "LatinJazzFans",
       items: [],
-      pushedUser:[],
+      pushedUser: [],
       submitUserArray: [],
       groupLatinJazz: this.props.passingLatinJazz,
       users: [
@@ -36,55 +35,40 @@ class App extends Component {
     };
   }
 
-
-  
-  
-
   onChange = event => {
-    
-    
-   let filterResult = this.state.pushedUser.filter(elem => {
-     if(elem !== event.target.name){
-       return true
-     }else{
-       return false
-     }
-   }) 
+    let filterResult = this.state.pushedUser.filter(elem => {
+      if (elem !== event.target.name) {
+        return true;
+      } else {
+        return false;
+      }
+    });
 
-   if(filterResult.length < this.state.pushedUser.length){
-    this.setState({ pushedUser: filterResult })
-   }else{
-    this.setState({ pushedUser: this.state.pushedUser.concat(event.target.name) })
-   }
-    
-    
-   
+    if (filterResult.length < this.state.pushedUser.length) {
+      this.setState({ pushedUser: filterResult });
+    } else {
+      this.setState({
+        pushedUser: this.state.pushedUser.concat(event.target.name)
+      });
+    }
 
-    console.log(this.state.pushedUser)
-    console.log(event.target.name)
+    console.log(this.state.pushedUser);
+    console.log(event.target.name);
   };
 
-
-  handleChange = (event) => {
-  
-   
-   
-     
-     this.setState({ selectedOption: event.target.value });
-     console.log(this.state.selectedOption, "what is selected option")
-   
-   
+  handleChange = event => {
+    this.setState({ selectedOption: event.target.value });
+    console.log(this.state.selectedOption, "what is selected option");
   };
 
   handleSubmit = (event, elem) => {
-   console.log(this.state.submitUserArray, "this is submit user array")
-   this.setState({ submitUserArray: this.state.pushedUser });
-   
-   
-   console.log(elem)
-   
-    this.triggerGroup()
-  }
+    console.log(this.state.submitUserArray, "this is submit user array");
+    this.setState({ submitUserArray: this.state.pushedUser });
+
+    console.log(elem);
+
+    this.triggerGroup();
+  };
 
   triggerGroup = () => {
     if (this.state.selectedOption === "LatinJazzFans") {
@@ -96,8 +80,6 @@ class App extends Component {
       this.LatinJazzFans();
     }
 
-    
-  
     if (this.state.selectedOption === "HouseHeads") {
       this.HouseHeads();
     }
@@ -110,68 +92,34 @@ class App extends Component {
     }
   };
 
- LatinJazzFans = () => {
-  
-console.log("we gettin in latin?")
+  LatinJazzFans = () => {
+    console.log("we gettin in latin?");
+  };
 
-  
+  HouseHeads = () => {};
 
+  FunkFans = () => {};
 
+  JazzCats = () => {};
 
-
- }
-
- HouseHeads = () => {
-
-
- }
-
- FunkFans = () => {
-
-
- }
-
- JazzCats = () => {
-
-
-
- }
-
- pushedUserLogic = (elem) => {
-    
-  let result = this.state.pushedUser.find(x => {
-   return elem === x
-    })   
-    if(result !== undefined){
-      return true
-    }else{
-      return false 
+  pushedUserLogic = elem => {
+    let result = this.state.pushedUser.find(x => {
+      return elem === x;
+    });
+    if (result !== undefined) {
+      return true;
+    } else {
+      return false;
     }
-
-    
-
- }
- 
- 
-
-
+  };
 
   listLogic = () => {
     //  let del = this.state.users.filter(x => x !== str);
     let mapOne = this.state.users.map(elem => (
-      <li className = "listLine">
-    <input type= "Checkbox" name = {elem}  onChange ={this.onChange}   /> 
-    <button className ="buttonFour">DELETE </button>
+      <li className="listLine">
+        <input type="Checkbox" name={elem} onChange={this.onChange} />
+        <button className="buttonFour">DELETE </button>
         {elem}
-
-              
-       
-         
-        
-      
-       
-       
-        
       </li>
     ));
 
@@ -179,27 +127,31 @@ console.log("we gettin in latin?")
   };
 
   render() {
-    console.log(this.state, "this.state")
+    console.log(this.state, "this.state");
     return (
       <div className="NameList">
+      <Groups
+      passingPushedUsers={this.state.submitUserArray}
+      passingGroup={this.state.selectedOption}
+    />
       <h4 className="App">Music Fans Unite</h4>
-      <div>
-
-          <Groups   passingPushedUsers={this.state.submitUserArray} passingGroup = {this.state.selectedOption} />
-          
+        <div>
+         
         </div>
         <div>
-        <select value= {this.state.selectedOption}  onChange={this.handleChange}  >
-      
-        <option value='LatinJazz' > Add to LatinJazz Fans  </option>
-        <option value='FunkFans'  >Add to Funk Fans</option> 
-        <option value='JazzCats'>Add to Jazz Cats</option>
-       <option value='HouseHeads'>Add to House Heads</option>
-
-       </select>
-       <button className = "buttonThree" onClick = {this.handleSubmit}>Add to Group</button>
+          <select
+            value={this.state.selectedOption}
+            onChange={this.handleChange}
+          >
+            <option value="LatinJazz"> Add to LatinJazz Fans </option>
+            <option value="FunkFans">Add to Funk Fans</option>
+            <option value="JazzCats">Add to Jazz Cats</option>
+            <option value="HouseHeads">Add to House Heads</option>
+          </select>
+          <button className="buttonThree" onClick={this.handleSubmit}>
+            Add to Group
+          </button>
           <ul>{this.listLogic()}</ul>
-        
         </div>
       </div>
     );

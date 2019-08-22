@@ -1,86 +1,57 @@
 .App {
- 
   text-align: center;
   top: 100px;
   font-size: 50px;
   color: rgb(204, 170, 170);
-
-
 }
 
 .button {
   background: grey;
- 
+
   width: 80px;
   height: 4vh;
   padding: 0px 0;
-  right: 790px ; 
-  
-  
-  
+  right: 790px;
+
   position: absolute;
-  
 
-  
-  
- 
- 
- 
-  
   transform: translateX(-50%) translateY(-50%);
-  border-radius: 40px;  }
+  border-radius: 40px;
+}
 
-  .buttonThree {
-    background: grey;
-   
-    width: 80px;
-    height: 3vh;
-    padding: 0px 0;
-    right: 0px ; 
-  
-    
-    position: absolute;
-    
-  
-    
-    
-   
-   
-   
-    
-    transform: translateX(-50%) translateY(-50%);
-    border-radius: 40px;  }
-    .buttonFour{
-      background: grey;
-     
-      width: 80px;
-      height: 3vh;
-      padding: 0px 0;
-      right: 0px ; 
-    
-      
-      position: absolute;
-      
-    
-      
-      
-     
-     
-     
-      
-      transform: translateX(-50%) translateY(-50%);
-      border-radius: 40px;  }
+.buttonThree {
+  background: grey;
 
-      html{
-        background-color: rgb(83, 83, 117)
+  width: 80px;
+  height: 3vh;
+  padding: 0px 0;
+  right: 0px;
 
-      }
+  position: absolute;
 
-  
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 40px;
+}
+.buttonFour {
+  background: grey;
 
-  
-  .buttonTwo {
-    background: #3498db;
+  width: 80px;
+  height: 3vh;
+  padding: 0px 0;
+  right: 0px;
+
+  position: absolute;
+
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 40px;
+}
+
+html {
+  background-color: rgb(83, 83, 117);
+}
+
+.buttonTwo {
+  background: #3498db;
   width: 35px;
   padding: 4px 0;
   left: 150px;
@@ -90,46 +61,42 @@
 
   flex-direction: column;
   display: inline-flex;
-  
-  
- 
-  
+
   transform: translateX(-50%) translateY(-50%);
-  border-radius: 20px;  }
+  border-radius: 20px;
+}
 
-  .listLine {
+.listLine {
   margin: 20px;
- color: white;
-
-  }
-
-  .Users {
-    text-align: center;
-
-    margin-top: 40px;
+  color: white;
   
-    bottom: 400px;
-    
-   top: 30px;
-   left: 500px
-  }
+}
 
-  .Dropdown-menu {
-    height: 20x;
-   bottom: 40px;
-   left: 50px;
-   display: inline-flex;
- 
-   margin-top: 40px;
-   flex-direction: column;
-  }
-  .Dropdown-menuTwo {
-   
+.Users {
+  text-align: center;
 
-  }
+  margin-top: 40px;
 
+  bottom: 400px;
 
+  top: 30px;
+  left: 500px;
+}
 
+.Dropdown-menu {
+  height: 20x;
+  bottom: 40px;
+  left: 50px;
+  display: inline-flex;
+
+  margin-top: 40px;
+  flex-direction: column;
+}
+.Dropdown-menuTwo {
+  position: absolute;
+  right: 700px;
+  bottom: 618px;
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -139,32 +106,26 @@
 
 .NameList {
   flex-direction: column;
-align-content: center;
+  align-content: center;
   align-items: center;
-left: 500px;
-font-size: 15px;
-position: absolute;
+  left: 500px;
+  font-size: 15px;
+  position: absolute;
 }
 .NameListTwo {
   flex-direction: column;
 
-align-content: center;
- 
-left: -500px;
+  align-content: center;
+
+  left: -500px;
   color: white;
-font-size: 15px;
-display: inline-flex;
-   position: absolute;
-
-   margin-top: 40px;
-  
-
+  font-size: 15px;
+  display: inline-flex;
+  position: absolute;
+top: 250px;
+  margin-top: 40px;
 }
 
 .body {
   background-color: blue;
 }
-
-
-
-
