@@ -96,6 +96,7 @@ class App extends Component {
       this.LatinJazzFans();
     }
 
+    
   
     if (this.state.selectedOption === "HouseHeads") {
       this.HouseHeads();
@@ -160,9 +161,10 @@ console.log("we gettin in latin?")
     let mapOne = this.state.users.map(elem => (
       <li className = "listLine">
     <input type= "Checkbox" name = {elem}  onChange ={this.onChange}   /> 
+    <button className ="buttonFour">DELETE </button>
         {elem}
 
-          
+              
        
          
         
@@ -180,12 +182,15 @@ console.log("we gettin in latin?")
     console.log(this.state, "this.state")
     return (
       <div className="NameList">
-        <div>
+      <h4 className="App">Music Fans Unite</h4>
+      <div>
+
           <Groups   passingPushedUsers={this.state.submitUserArray} passingGroup = {this.state.selectedOption} />
-          <h4 className="App">Music Fans Unite</h4>
+          
         </div>
         <div>
         <select value= {this.state.selectedOption}  onChange={this.handleChange}  >
+      
         <option value='LatinJazz' > Add to LatinJazz Fans  </option>
         <option value='FunkFans'  >Add to Funk Fans</option> 
         <option value='JazzCats'>Add to Jazz Cats</option>

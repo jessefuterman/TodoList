@@ -9,7 +9,7 @@ class Groups extends Component {
       pushedUser: [],
 
       userSelectedOption: props.passingGroup,
-      selectedOption: "",
+      selectedOption: "FunkFans",
       groups: {
         LatinJazzFans: ["Denny ", "Lenny ", "Penny "],
 
@@ -86,27 +86,39 @@ class Groups extends Component {
     });
   };
 
+  handleSubmit = (str) => {
+    let del = this.state.groups[this.state.selectedOption].filter(x => x !== str);
+    let groups = this.state.groups
+    groups[this.state.selectedOption] = del
+    this.setState({ groups: groups });
+
+
+
+  }
+
   mapBrain = () => {
     //passing group
-
-    let mapOne = this.state.items.map(elem => (
+     if(this.state.selectedOption !== ""){
+    let mapOne = this.state.groups[this.state.selectedOption].map(elem => (
       <ul>
         {elem}
 
         <button
           className="buttonTwo"
-          onClick={() => {
-            this.handleSubmit(elem);
-            this.handleExperience(elem);
-            this.setState({ elem: elem });
-          }}
+          onClick={()=>
+            this.handleSubmit(elem)}
+            
+          
         >
           DELETE
         </button>
       </ul>
-    ));
+    ))
     return mapOne;
-  };
+     }
+    
+  }
+
   handleChange = event => {
     this.setState({ selectedOption: event.target.value }, () =>
       this.triggerGroup()
@@ -116,10 +128,27 @@ class Groups extends Component {
     event.preventDefault();
     this.setState({ text: event.target.value });
   };
-  componentDidUpdate = (prevProps, prevState) => {
+  componentDidUpdate = (prevProps, prevState, i) => {
     if (prevProps.passingPushedUsers !== this.props.passingPushedUsers) {
+     let groups =  this.state.groups
+     let groupArray = []
+     for (i = 0; i < this.props.passingPushedUsers.length; i++) { 
+       let user = this.props.passingPushedUsers[i]
+       console.log(this.props.passingGroup, "this is passing group")
+       console.log(groups, "this is groups")
+       console.log(this.state.groups, "this is state groups")
+      if (groups[this.props.passingGroup].includes(user) === false){
+        
+        groups[this.props.passingGroup].push(user);
+      } 
+
+    }
+     
+    
+     
+
       this.setState({
-      [this.props.passingGroup]: this.props.passingPushedUsers
+      groups: groups
       });
     }
   };
@@ -135,9 +164,7 @@ class Groups extends Component {
           className="Dropdown-menuTwo"
           onChange={this.handleChange}
         >
-          <option selected value="SelectAGroup">
-            Select A Music Group
-          </option>
+          
           <option value="FunkFans">Funk Fans</option>
           <option value="JazzCats">Jazz Cats</option>
           <option value="LatinJazzFans">Latin Jazz Fans</option>
