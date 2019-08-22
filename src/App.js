@@ -14,6 +14,7 @@ class App extends Component {
       selectedOption: "",
       items: [],
       pushedUser:[],
+      submitUserArray: [],
       groupLatinJazz: this.props.passingLatinJazz,
       users: [
         "Jesse ",
@@ -57,7 +58,7 @@ class App extends Component {
    }
     
     
-    this.setState({ pushedUser: event.target.name });
+   
 
     console.log(this.state.pushedUser)
     console.log(event.target.name)
@@ -76,9 +77,9 @@ class App extends Component {
   };
 
   handleSubmit = (event, elem) => {
-   console.log('is it in handlesubmit')
+   console.log(this.state.submitUserArray, "this is submit user array")
+   this.setState({ submitUserArray: this.state.pushedUser });
    
-   this.setState({ pushedUser: elem })
    
    console.log(elem)
    
@@ -166,7 +167,7 @@ console.log("we gettin in latin?")
          
         
       
-        <button className = "buttonThree" onClick = {(event) => {this.handleSubmit(event,elem)}}>Add to Group</button>
+       
        
         
       </li>
@@ -176,21 +177,24 @@ console.log("we gettin in latin?")
   };
 
   render() {
+    console.log(this.state, "this.state")
     return (
       <div className="NameList">
         <div>
-          <Groups passingUsers={this.state.users}  passingPushedUsers={this.state.pushedUser} passingGroup = {this.state.selectedOption} />
+          <Groups   passingPushedUsers={this.state.submitUserArray} passingGroup = {this.state.selectedOption} />
           <h4 className="App">Music Fans Unite</h4>
         </div>
         <div>
-          <ul>{this.listLogic()}</ul>
-          <select value= {this.state.selectedOption}  onChange={this.handleChange}  >
+        <select value= {this.state.selectedOption}  onChange={this.handleChange}  >
         <option value='LatinJazz' > Add to LatinJazz Fans  </option>
         <option value='FunkFans'  >Add to Funk Fans</option> 
         <option value='JazzCats'>Add to Jazz Cats</option>
        <option value='HouseHeads'>Add to House Heads</option>
 
        </select>
+       <button className = "buttonThree" onClick = {this.handleSubmit}>Add to Group</button>
+          <ul>{this.listLogic()}</ul>
+        
         </div>
       </div>
     );

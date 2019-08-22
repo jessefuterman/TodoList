@@ -6,15 +6,15 @@ class Groups extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pushedUser: this.props.passingPushedUsers,
-        users: this.props.passingUsers,
-        userSelectedOption: this.props.passingGroup,
+      pushedUser: [],
+
+      userSelectedOption: props.passingGroup,
       selectedOption: "",
       groups: {
         LatinJazzFans: ["Denny ", "Lenny ", "Penny "],
-        
+
         HouseHeads: ["Jarry ", "Larry ", "Kerri "],
-       
+
         FunkFans: ["Spiro ", "FonkUpdate ", "Cherry23 "],
         JazzCats: ["Pharoah ", "Coltrane ", " Monk "]
       },
@@ -24,18 +24,16 @@ class Groups extends Component {
   }
 
   triggerGroup = () => {
-   console.log(this.state.pushedUser)
-   console.log(this.state.userSelectedOption)
+    console.log(this.state.pushedUser, "this is pushed user passing");
+    console.log(this.state.userSelectedOption);
     if (this.state.selectedOption === "LatinJazzFans") {
-        
-        this.LatinJazzFans();
+      this.LatinJazzFans();
     }
 
-    
     if (this.state.selectedOption === "HouseHeads") {
       this.HouseHeads();
     }
-   
+
     if (this.state.selectedOption === "FunkFans") {
       this.FunkFans();
     }
@@ -45,7 +43,6 @@ class Groups extends Component {
   };
 
   LatinJazzFans = i => {
-
     let pushed = [];
 
     for (i = 0; i < this.state.groups.LatinJazzFans.length; i++) {
@@ -54,16 +51,9 @@ class Groups extends Component {
     this.setState({
       items: [pushed[0], pushed[1], pushed[2]]
     });
-
-    
-
-   
   };
 
-  
-
   HouseHeads = i => {
- 
     let pushed = [];
 
     for (i = 0; i < this.state.groups.HouseHeads.length; i++) {
@@ -72,12 +62,9 @@ class Groups extends Component {
     this.setState({
       items: [pushed[0], pushed[1], pushed[2]]
     });
-
-   
   };
 
   FunkFans = i => {
-   
     let pushed = [];
 
     for (i = 0; i < this.state.groups.FunkFans.length; i++) {
@@ -86,12 +73,9 @@ class Groups extends Component {
     this.setState({
       items: [pushed[0], pushed[1], pushed[2]]
     });
-
   };
 
-
   JazzCats = i => {
-    
     let pushed = [];
 
     for (i = 0; i < this.state.groups.JazzCats.length; i++) {
@@ -100,20 +84,16 @@ class Groups extends Component {
     this.setState({
       items: [pushed[0], pushed[1], pushed[2]]
     });
-   
-    
   };
-
 
   mapBrain = () => {
     //passing group
-   
-    
-    let mapOne = this.state.items.map(elem => (
-        <ul>
-          {elem}
 
-          <button
+    let mapOne = this.state.items.map(elem => (
+      <ul>
+        {elem}
+
+        <button
           className="buttonTwo"
           onClick={() => {
             this.handleSubmit(elem);
@@ -123,17 +103,12 @@ class Groups extends Component {
         >
           DELETE
         </button>
-      
-       
-        </ul>
-      ));
-      return mapOne
-
-
-  }
+      </ul>
+    ));
+    return mapOne;
+  };
   handleChange = event => {
-  
-    this.setState({ selectedOption: event.target.value}, () =>
+    this.setState({ selectedOption: event.target.value }, () =>
       this.triggerGroup()
     );
   };
@@ -141,8 +116,16 @@ class Groups extends Component {
     event.preventDefault();
     this.setState({ text: event.target.value });
   };
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.passingPushedUsers !== this.props.passingPushedUsers) {
+      this.setState({
+      [this.props.passingGroup]: this.props.passingPushedUsers
+      });
+    }
+  };
 
   render() {
+    console.log(this.state.pushedUser, "this is passing pushed users");
     return (
       <div className="App">
         <div />
@@ -158,7 +141,7 @@ class Groups extends Component {
           <option value="FunkFans">Funk Fans</option>
           <option value="JazzCats">Jazz Cats</option>
           <option value="LatinJazzFans">Latin Jazz Fans</option>
-         
+
           <option value="HouseHeads">House Heads</option>
         </select>
         <li className="NameListTwo">{this.mapBrain()}</li>
