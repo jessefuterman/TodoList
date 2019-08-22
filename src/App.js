@@ -132,10 +132,14 @@ console.log("we gettin in latin?")
         
       
         <button className = "buttonThree" onClick = {(event) => {this.handleSubmit(event,elem)}}>Add to Group</button>
-        <Checkbox label='Add to LatinJazz Fans'   onChange={(event) => {this.handleChange(event,elem)}}  value="LatinJazzFans"  />
-        <Checkbox label='Add to Funk Fans'   onChange={(event) => {this.handleChange(event,elem)}} value="FunkFans"/>
-        <Checkbox label='Add to JazzCats' onChange={(event) => {this.handleChange(event,elem)}}  value = "JazzCats"/>
-       <Checkbox label='Add to House Heads' onChange={(event) => {this.handleChange(event,elem)}}  value = "HouseHeads"/>
+        
+        <select>
+        <option value='Add to LatinJazz Fans' onChange={(event) => {this.handleChange(event,elem)}}> Add to LatinJazz Fans  </option>
+        <option value='Add to Funk Fans'   onChange={(event) => {this.handleChange(event,elem)}}>Add to Funk Fans</option> 
+        <option value='Add to JazzCats' onChange={(event) => {this.handleChange(event,elem)}}>Add to Jazz Cats</option>
+       <option value='Add to House Heads' onChange={(event) => {this.handleChange(event,elem)}}>Add to House Heads</option>
+
+       </select>
       </ul>
     ));
 
