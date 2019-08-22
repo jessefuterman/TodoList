@@ -13,7 +13,7 @@ class App extends Component {
      text: "",
       selectedOption: "",
       items: [],
-      pushedUser:"",
+      pushedUser:[],
       groupLatinJazz: this.props.passingLatinJazz,
       users: [
         "Jesse ",
@@ -40,9 +40,10 @@ class App extends Component {
   
 
   onChange = event => {
-   
+    this.setState({ pushedUser: event.target.name });
+
     
-    console.log(event)
+    console.log(event.target.name)
   };
 
 
@@ -50,7 +51,7 @@ class App extends Component {
  
    
    
-     this.onChange()
+     
      this.setState({ selectedOption: event.target.value });
      console.log(this.state.selectedOption, "what is selected option")
    
@@ -116,6 +117,21 @@ console.log("we gettin in latin?")
 
 
  }
+
+ pushedUserLogic = (elem) => {
+    
+  let result = this.state.pushedUser.find(x => {
+   return elem === x
+    })   
+    if(result !== undefined){
+      return true
+    }else{
+      return false 
+    }
+
+    
+
+ }
  
  
 
@@ -125,6 +141,7 @@ console.log("we gettin in latin?")
     //  let del = this.state.users.filter(x => x !== str);
     let mapOne = this.state.users.map(elem => (
       <li className = "listLine">
+    <input type= "Checkbox" name = {elem}  checked = {()=>this.pushedUserLogic(elem)} onChange ={this.onChange}   /> 
         {elem}
 
           
@@ -133,14 +150,8 @@ console.log("we gettin in latin?")
         
       
         <button className = "buttonThree" onClick = {(event) => {this.handleSubmit(event,elem)}}>Add to Group</button>
+       
         
-        <select>
-        <option value='Add to LatinJazz Fans' onChange={(event) => {this.handleChange(event,elem)}}> Add to LatinJazz Fans  </option>
-        <option value='Add to Funk Fans'   onChange={(event) => {this.handleChange(event,elem)}}>Add to Funk Fans</option> 
-        <option value='Add to JazzCats' onChange={(event) => {this.handleChange(event,elem)}}>Add to Jazz Cats</option>
-       <option value='Add to House Heads' onChange={(event) => {this.handleChange(event,elem)}}>Add to House Heads</option>
-
-       </select>
       </li>
     ));
 
@@ -156,6 +167,13 @@ console.log("we gettin in latin?")
         </div>
         <div>
           <ul>{this.listLogic()}</ul>
+          <select value= {this.state.selectedOption}  onChange={(event) => {this.handleChange(event)}}  >
+        <option value='LatinJazz' > Add to LatinJazz Fans  </option>
+        <option value='FunkFans'  >Add to Funk Fans</option> 
+        <option value='JazzCats'>Add to Jazz Cats</option>
+       <option value='HouseHeads'>Add to House Heads</option>
+
+       </select>
         </div>
       </div>
     );
