@@ -40,15 +40,32 @@ class App extends Component {
   
 
   onChange = event => {
+    
+    
+   let filterResult = this.state.pushedUser.filter(elem => {
+     if(elem !== event.target.name){
+       return true
+     }else{
+       return false
+     }
+   }) 
+
+   if(filterResult.length < this.state.pushedUser.length){
+    this.setState({ pushedUser: filterResult })
+   }else{
+    this.setState({ pushedUser: this.state.pushedUser.concat(event.target.name) })
+   }
+    
+    
     this.setState({ pushedUser: event.target.name });
 
-    
+    console.log(this.state.pushedUser)
     console.log(event.target.name)
   };
 
 
   handleChange = (event) => {
- 
+  
    
    
      
@@ -141,7 +158,7 @@ console.log("we gettin in latin?")
     //  let del = this.state.users.filter(x => x !== str);
     let mapOne = this.state.users.map(elem => (
       <li className = "listLine">
-    <input type= "Checkbox" name = {elem}  checked = {()=>this.pushedUserLogic(elem)} onChange ={this.onChange}   /> 
+    <input type= "Checkbox" name = {elem}  onChange ={this.onChange}   /> 
         {elem}
 
           
@@ -167,7 +184,7 @@ console.log("we gettin in latin?")
         </div>
         <div>
           <ul>{this.listLogic()}</ul>
-          <select value= {this.state.selectedOption}  onChange={(event) => {this.handleChange(event)}}  >
+          <select value= {this.state.selectedOption}  onChange={this.handleChange}  >
         <option value='LatinJazz' > Add to LatinJazz Fans  </option>
         <option value='FunkFans'  >Add to Funk Fans</option> 
         <option value='JazzCats'>Add to Jazz Cats</option>
