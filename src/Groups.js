@@ -98,7 +98,9 @@ class Groups extends Component {
 
   mapBrain = () => {
     //passing group
-    if (this.state.selectedOption !== "") {
+    if (this.state.groups[this.state.selectedOption] !== undefined || this.state.groups[this.state.selectedOption] !== ""){
+    
+    }if(this.state.groups[this.state.selectedOption] !== ""){
       let mapOne = this.state.groups[this.state.selectedOption].map(elem => (
         <ul>
           {elem}
@@ -110,7 +112,9 @@ class Groups extends Component {
       ));
       return mapOne;
     }
-  };
+    
+    
+  }
 
   handleChange = event => {
     this.setState({ selectedOption: event.target.value }, () =>
@@ -144,12 +148,13 @@ class Groups extends Component {
   render() {
     console.log(this.state.pushedUser, "this is passing pushed users");
     console.log(this.state.groups["JazzCats"].length, "whats up")
-    if(this.state.groups["JazzCats"].length === 0) {
-      console.log("are we satisfied")
-      let groups = this.state.groups
-      delete groups["JazzCats"]
-      this.setState({ groups: groups })
-    }
+   for(let gr in this.state.groups){
+     if(this.state.groups[gr].length === 0){
+       let groups = this.state.groups
+       delete groups[gr]
+       this.setState({groups: groups})
+     }
+   }
     return (
       <div className="App">
        
@@ -159,11 +164,11 @@ class Groups extends Component {
           className="Dropdown-menuTwo"
           onChange={this.handleChange}
         >
-          <option value="FunkFans">Funk Fans</option>
-          <option value="JazzCats">Jazz Cats</option>
-          <option value="LatinJazzFans">Latin Jazz Fans</option>
+          
+        {Object.keys(this.state.groups).map((group)=>{
+          return <option value={group}>{group}</option>
+        })}
 
-          <option value="HouseHeads">House Heads</option>
         </select>
         <li className="NameListTwo">{this.mapBrain()}</li>
       </div>
