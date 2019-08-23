@@ -14,9 +14,11 @@ class Groups extends Component {
         LatinJazzFans: ["Denny ", "Lenny ", "Penny "],
 
         HouseHeads: ["Jarry ", "Larry ", "Kerri "],
-
+        
+        JazzCats: ["Pharoah ", "Coltrane ", " Monk "],
         FunkFans: ["Spiro ", "FonkUpdate ", "Cherry23 "],
-        JazzCats: ["Pharoah ", "Coltrane ", " Monk "]
+        groups: [""]
+        
       },
       text: "",
       items: [],
@@ -97,10 +99,10 @@ class Groups extends Component {
   };
 
   mapBrain = () => {
-    //passing group
-    if (this.state.groups[this.state.selectedOption] !== undefined || this.state.groups[this.state.selectedOption] !== ""){
     
-    }if(this.state.groups[this.state.selectedOption] !== ""){
+    if(this.state.groups[this.state.selectedOption] === undefined || this.state.groups[this.state.selectedOption] === ""){
+     console.log("we in here")
+    } else if (this.state.groups[this.state.selectedOption] !== undefined || this.state.groups[this.state.selectedOption] !== ""){
       let mapOne = this.state.groups[this.state.selectedOption].map(elem => (
         <ul>
           {elem}
@@ -112,6 +114,8 @@ class Groups extends Component {
       ));
       return mapOne;
     }
+      
+    
     
     
   }
@@ -131,9 +135,7 @@ class Groups extends Component {
       
       for (i = 0; i < this.props.passingPushedUsers.length; i++) {
         let user = this.props.passingPushedUsers[i];
-        console.log(this.props.passingGroup, "this is passing group");
-        console.log(groups, "this is groups");
-        console.log(this.state.groups, "this is state groups");
+       
         if (groups[this.props.passingGroup].includes(user) === false) {
           groups[this.props.passingGroup].push(user);
         }
@@ -146,8 +148,7 @@ class Groups extends Component {
   };
 
   render() {
-    console.log(this.state.pushedUser, "this is passing pushed users");
-    console.log(this.state.groups["JazzCats"].length, "whats up")
+  
    for(let gr in this.state.groups){
      if(this.state.groups[gr].length === 0){
        let groups = this.state.groups
