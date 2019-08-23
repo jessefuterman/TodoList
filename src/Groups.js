@@ -40,6 +40,7 @@ class Groups extends Component {
     if (this.state.selectedOption === "JazzCats") {
       this.JazzCats();
     }
+    
   };
 
   LatinJazzFans = i => {
@@ -142,6 +143,13 @@ class Groups extends Component {
 
   render() {
     console.log(this.state.pushedUser, "this is passing pushed users");
+    console.log(this.state.groups["JazzCats"].length, "whats up")
+    if(this.state.groups["JazzCats"].length === 0) {
+      console.log("are we satisfied")
+      let groups = this.state.groups
+      delete groups["JazzCats"]
+      this.setState({ groups: groups })
+    }
     return (
       <div className="App">
        
@@ -160,6 +168,8 @@ class Groups extends Component {
         <li className="NameListTwo">{this.mapBrain()}</li>
       </div>
     );
+    
   }
+  
 }
 export default Groups;
