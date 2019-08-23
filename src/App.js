@@ -110,12 +110,21 @@ class App extends Component {
     }
   };
 
+   handleDelete = (elem, str) => {
+    console.log("we in delete?", )
+    let del = this.state.users.filter(
+      x => x !== elem
+    );
+    let users = this.state.users;
+    users = del;
+    this.setState({ users: users });
+   }
   listLogic = () => {
     //  let del = this.state.users.filter(x => x !== str);
     let mapOne = this.state.users.map(elem => (
       <li className="listLine">
         <input type="Checkbox" name={elem} onChange={this.onChange} />
-        <button className="buttonFour">DELETE </button>
+        <button className="buttonFour" onClick={() => this.handleDelete(elem)}>DELETE </button>
         {elem}
       </li>
     ));
@@ -125,7 +134,7 @@ class App extends Component {
 
 
 
-  onChange = (event) => {
+  newUseronChange = (event) => {
     this.setState({ term: event.target.value });
   }
 
@@ -133,7 +142,7 @@ class App extends Component {
     event.preventDefault();
     this.setState({
       term: '',
-      items: [...this.state.items, this.state.term],
+      users: [...this.state.users, this.state.term],
       
     });
   }
@@ -154,7 +163,7 @@ class App extends Component {
         </div>
         <div>
         <form className="App" onSubmit={this.onSubmit}>
-        <input value={this.state.term} onChange={this.onChange} />
+        <input value={this.state.term} onChange={this.newUseronChange} />
         <button>Add User</button>
       </form>
         </div>
