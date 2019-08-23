@@ -164,7 +164,7 @@ class Groups extends Component {
             return <option value={group}>{group}</option>;
           })}
         </select>
-        <li className="NameListTwo">{this.dropDownTwo()}</li>
+        <div className="NameListTwo">{this.dropDownTwo()}</div>
       </div>
     );
   }
