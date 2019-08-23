@@ -69,7 +69,6 @@ html {
 .listLine {
   margin: 20px;
   color: white;
-  
 }
 
 .Users {
@@ -93,10 +92,11 @@ html {
   flex-direction: column;
 }
 .Dropdown-menuTwo {
+  position: absolute;
+  position: -webkit-sticky;
   position: fixed;
-  
-  right: 800px;
-  bottom: 360px;
+  left: 0px;
+  bottom: 325px;
 }
 
 .App-logo {
@@ -123,7 +123,7 @@ html {
   font-size: 15px;
   display: inline-flex;
   position: absolute;
-top: 250px;
+  top: 250px;
   margin-top: 40px;
 }
 

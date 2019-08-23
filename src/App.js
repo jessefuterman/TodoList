@@ -9,9 +9,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
       selectedOption: "LatinJazzFans",
-      
+
       pushedUser: [],
       submitUserArray: [],
       groupLatinJazz: this.props.passingLatinJazz,
@@ -51,27 +50,15 @@ class App extends Component {
         pushedUser: this.state.pushedUser.concat(event.target.name)
       });
     }
-
-    
   };
-
-  
 
   handleChange = event => {
     this.setState({ selectedOption: event.target.value });
-    
   };
 
   handleSubmit = (event, elem) => {
-    
     this.setState({ submitUserArray: this.state.pushedUser });
-   
-    
-
-   
   };
-
-  
 
   pushedUserLogic = elem => {
     let result = this.state.pushedUser.find(x => {
@@ -84,71 +71,65 @@ class App extends Component {
     }
   };
 
-   handleDelete = (elem, str) => {
-    console.log("we in delete?", )
-    let del = this.state.users.filter(
-      x => x !== elem
-    );
+  handleDelete = (elem, str) => {
+    console.log("we in delete?");
+    let del = this.state.users.filter(x => x !== elem);
     let users = this.state.users;
     users = del;
     this.setState({ users: users });
-   }
+  };
   listLogic = () => {
     //  let del = this.state.users.filter(x => x !== str);
     let mapOne = this.state.users.map(elem => (
       <li className="listLine">
         <input type="Checkbox" name={elem} onChange={this.onChange} />
-        <button className="buttonFour" onClick={() => this.handleDelete(elem)}>DELETE </button>
+        <button className="buttonFour" onClick={() => this.handleDelete(elem)}>
+          DELETE{" "}
+        </button>
         {elem}
       </li>
     ));
-    
+
     return mapOne;
   };
 
-
-
-  newUseronChange = (event) => {
+  newUseronChange = event => {
     this.setState({ term: event.target.value });
-  }
+  };
 
-  onSubmit = (event) => {
+  onSubmit = event => {
     event.preventDefault();
     this.setState({
-      term: '',
-      users: [...this.state.users, this.state.term],
-      
+      term: "",
+      users: [...this.state.users, this.state.term]
     });
-  }
+  };
 
   render() {
-
     console.log(this.state, "this.state");
     return (
       <div className="NameList">
-      <Groups
-      passingPushedUsers={this.state.submitUserArray}
-      passingGroup={this.state.selectedOption}
-    />
-      <h4 className="App">Music Fans Unite</h4>
+        <Groups
+          passingPushedUsers={this.state.submitUserArray}
+          passingGroup={this.state.selectedOption}
+        />
+        <h4 className="App">Music Fans Unite</h4>
+        <div />
         <div>
-         
-        </div>
-        <div>
-        <form className="App" onSubmit={this.onSubmit}>
-        <input value={this.state.term} onChange={this.newUseronChange} />
-        <button>Add User</button>
-      </form>
+          <form className="App" onSubmit={this.onSubmit}>
+            <input value={this.state.term} onChange={this.newUseronChange} />
+            <button>Add User</button>
+          </form>
         </div>
         <div>
           <select
             value={this.state.selectedOption}
             onChange={this.handleChange}
           >
-            <option value="LatinJazz" > Add to LatinJazz Fans </option>
-            <option value="FunkFans" >Add to Funk Fans</option>
-            <option value="JazzCats" >Add to Jazz Cats</option>
-            <option value="HouseHeads" >Add to House Heads</option>
+            <option value="LatinJazz"> Add to LatinJazz Fans </option>
+            <option value="FunkFans">Add to Funk Fans</option>
+            <option value="JazzCats">Add to Jazz Cats</option>
+            <option value="HouseHeads">Add to House Heads</option>
           </select>
           <button className="buttonThree" onClick={this.handleSubmit}>
             Add to Group

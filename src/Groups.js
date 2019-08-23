@@ -9,25 +9,23 @@ class Groups extends Component {
       pushedUser: [],
 
       userSelectedOption: props.passingGroup,
-      selectedOption: "FunkFans",
+      selectedOption: "LatinJazzFans",
       groups: {
         LatinJazzFans: ["Denny ", "Lenny ", "Penny "],
 
         HouseHeads: ["Jarry ", "Larry ", "Kerri "],
-        
+
         JazzCats: ["Pharoah ", "Coltrane ", " Monk "],
         FunkFans: ["Spiro ", "FonkUpdate ", "Cherry23 "],
         groups: [""]
-        
       },
       text: "",
       items: [],
-      LatinJazzvisible:""
+      
     };
   }
 
   triggerGroup = () => {
-    
     if (this.state.selectedOption === "LatinJazzFans") {
       this.LatinJazzFans();
     }
@@ -42,7 +40,6 @@ class Groups extends Component {
     if (this.state.selectedOption === "JazzCats") {
       this.JazzCats();
     }
-    
   };
 
   LatinJazzFans = i => {
@@ -99,10 +96,15 @@ class Groups extends Component {
   };
 
   mapBrain = () => {
-    
-    if(this.state.groups[this.state.selectedOption] === undefined || this.state.groups[this.state.selectedOption] === ""){
-     console.log("we in here")
-    } else if (this.state.groups[this.state.selectedOption] !== undefined || this.state.groups[this.state.selectedOption] !== ""){
+    if (
+      this.state.groups[this.state.selectedOption] === undefined ||
+      this.state.groups[this.state.selectedOption] === ""
+    ) {
+      console.log("we in here");
+    } else if (
+      this.state.groups[this.state.selectedOption] !== undefined ||
+      this.state.groups[this.state.selectedOption] !== ""
+    ) {
       let mapOne = this.state.groups[this.state.selectedOption].map(elem => (
         <ul>
           {elem}
@@ -114,11 +116,7 @@ class Groups extends Component {
       ));
       return mapOne;
     }
-      
-    
-    
-    
-  }
+  };
 
   handleChange = event => {
     this.setState({ selectedOption: event.target.value }, () =>
@@ -132,10 +130,10 @@ class Groups extends Component {
   componentDidUpdate = (prevProps, prevState, i) => {
     if (prevProps.passingPushedUsers !== this.props.passingPushedUsers) {
       let groups = this.state.groups;
-      
+
       for (i = 0; i < this.props.passingPushedUsers.length; i++) {
         let user = this.props.passingPushedUsers[i];
-       
+
         if (groups[this.props.passingGroup].includes(user) === false) {
           groups[this.props.passingGroup].push(user);
         }
@@ -148,34 +146,27 @@ class Groups extends Component {
   };
 
   render() {
-  
-   for(let gr in this.state.groups){
-     if(this.state.groups[gr].length === 0){
-       let groups = this.state.groups
-       delete groups[gr]
-       this.setState({groups: groups})
-     }
-   }
+    for (let gr in this.state.groups) {
+      if (this.state.groups[gr].length === 0) {
+        let groups = this.state.groups;
+        delete groups[gr];
+        this.setState({ groups: groups });
+      }
+    }
     return (
       <div className="App">
-       
-
         <select
           value={this.state.selectedOption}
           className="Dropdown-menuTwo"
           onChange={this.handleChange}
         >
-          
-        {Object.keys(this.state.groups).map((group)=>{
-          return <option value={group}>{group}</option>
-        })}
-
+          {Object.keys(this.state.groups).map(group => {
+            return <option value={group}>{group}</option>;
+          })}
         </select>
         <li className="NameListTwo">{this.mapBrain()}</li>
       </div>
     );
-    
   }
-  
 }
 export default Groups;
