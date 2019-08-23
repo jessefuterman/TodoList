@@ -54,9 +54,8 @@ html {
 
 .submitMenu {
   text-align: center;
-  top: 130px;
-  position: absolute;
-
+    position: relative;
+    right: 180px;
 }
 .buttonTwo {
   background: #3498db;
@@ -113,7 +112,7 @@ html {
 .NameList {
  
   align-content: center;
-  align-items: center;
+  
   left: 500px;
   font-size: 15px;
   position: absolute;

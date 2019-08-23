@@ -16,8 +16,8 @@ class Groups extends Component {
         HouseHeads: ["Jarry ", "Larry ", "Kerri "],
 
         JazzCats: ["Pharoah ", "Coltrane ", " Monk "],
-        FunkFans: ["Spiro ", "FonkUpdate ", "Cherry23 "],
-        groups: [""]
+        FunkFans: ["Spiro ", "Cherry23 "]
+        
       },
       text: "",
       items: [],
