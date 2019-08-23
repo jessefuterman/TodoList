@@ -9,10 +9,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: "",
+      
       selectedOption: "LatinJazzFans",
-      submitUser: [],
-      items: [],
+      
       pushedUser: [],
       submitUserArray: [],
       groupLatinJazz: this.props.passingLatinJazz,
@@ -53,51 +52,26 @@ class App extends Component {
       });
     }
 
-    console.log(this.state.pushedUser);
-    console.log(event.target.name);
+    
   };
+
+  
 
   handleChange = event => {
     this.setState({ selectedOption: event.target.value });
-    console.log(this.state.selectedOption, "what is selected option");
+    
   };
 
   handleSubmit = (event, elem) => {
-    console.log(this.state.submitUserArray, "this is submit user array");
+    
     this.setState({ submitUserArray: this.state.pushedUser });
+   
+    
 
-    console.log(elem);
-
-    this.triggerGroup();
+   
   };
 
-  triggerGroup = () => {
-    if (this.state.selectedOption === "LatinJazzFans") {
-      
-      this.LatinJazzFans();
-    }
-
-    if (this.state.selectedOption === "HouseHeads") {
-      this.HouseHeads();
-    }
-
-    if (this.state.selectedOption === "FunkFans") {
-      this.FunkFans();
-    }
-    if (this.state.selectedOption === "JazzCats") {
-      this.JazzCats();
-    }
-  };
-
-  LatinJazzFans = () => {
-    console.log("we gettin in latin?");
-  };
-
-  HouseHeads = () => {};
-
-  FunkFans = () => {};
-
-  JazzCats = () => {};
+  
 
   pushedUserLogic = elem => {
     let result = this.state.pushedUser.find(x => {
@@ -128,7 +102,7 @@ class App extends Component {
         {elem}
       </li>
     ));
-
+    
     return mapOne;
   };
 
@@ -148,7 +122,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.items)
 
     console.log(this.state, "this.state");
     return (
@@ -172,10 +145,10 @@ class App extends Component {
             value={this.state.selectedOption}
             onChange={this.handleChange}
           >
-            <option value="LatinJazz"> Add to LatinJazz Fans </option>
-            <option value="FunkFans">Add to Funk Fans</option>
-            <option value="JazzCats">Add to Jazz Cats</option>
-            <option value="HouseHeads">Add to House Heads</option>
+            <option value="LatinJazz" > Add to LatinJazz Fans </option>
+            <option value="FunkFans" >Add to Funk Fans</option>
+            <option value="JazzCats" >Add to Jazz Cats</option>
+            <option value="HouseHeads" >Add to House Heads</option>
           </select>
           <button className="buttonThree" onClick={this.handleSubmit}>
             Add to Group

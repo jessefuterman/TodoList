@@ -19,13 +19,13 @@ class Groups extends Component {
         JazzCats: ["Pharoah ", "Coltrane ", " Monk "]
       },
       text: "",
-      items: []
+      items: [],
+      LatinJazzvisible:""
     };
   }
 
   triggerGroup = () => {
-    console.log(this.state.pushedUser, "this is pushed user passing");
-    console.log(this.state.userSelectedOption);
+    
     if (this.state.selectedOption === "LatinJazzFans") {
       this.LatinJazzFans();
     }
@@ -123,7 +123,7 @@ class Groups extends Component {
   componentDidUpdate = (prevProps, prevState, i) => {
     if (prevProps.passingPushedUsers !== this.props.passingPushedUsers) {
       let groups = this.state.groups;
-      let groupArray = [];
+      
       for (i = 0; i < this.props.passingPushedUsers.length; i++) {
         let user = this.props.passingPushedUsers[i];
         console.log(this.props.passingGroup, "this is passing group");
