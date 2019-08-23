@@ -114,12 +114,12 @@ class App extends Component {
           passingGroup={this.state.selectedOption}
         />
         <div>
-        <h4 className="App">Music Fans Unite</h4>
+        <div className="App">Music Fans Unite</div>
         <div />
         <div>
           <form className="submitMenu" onSubmit={this.onSubmit}>
             <input value={this.state.term} onChange={this.newUseronChange} />
-            <button>Add User</button>
+            <button  className>Add User</button>
           </form>
         </div>
         <div>
