@@ -134,7 +134,7 @@ class App extends Component {
           <button className="buttonThree" onClick={this.handleSubmit}>
             Add to Group
           </button>
-          <ul>{this.listLogic()}</ul>
+          <div>{this.listLogic()}</div>
         </div>
       </div>
     );

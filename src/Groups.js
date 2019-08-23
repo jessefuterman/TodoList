@@ -95,7 +95,7 @@ class Groups extends Component {
     this.setState({ groups: groups });
   };
 
-  mapBrain = () => {
+  dropDownTwo = () => {
     if (
       this.state.groups[this.state.selectedOption] === undefined ||
       this.state.groups[this.state.selectedOption] === ""
@@ -164,7 +164,7 @@ class Groups extends Component {
             return <option value={group}>{group}</option>;
           })}
         </select>
-        <li className="NameListTwo">{this.mapBrain()}</li>
+        <li className="NameListTwo">{this.dropDownTwo()}</li>
       </div>
     );
   }

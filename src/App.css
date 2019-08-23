@@ -92,10 +92,11 @@ html {
   flex-direction: column;
 }
 .Dropdown-menuTwo {
- 
+  position: absolute;
+  position: -webkit-sticky;
   position: fixed;
-  left: 50px;
-    bottom: 700px;
+  left: 0px;
+  bottom: 325px;
 }
 
 .App-logo {
