@@ -113,10 +113,11 @@ class App extends Component {
           passingPushedUsers={this.state.submitUserArray}
           passingGroup={this.state.selectedOption}
         />
+        <div>
         <h4 className="App">Music Fans Unite</h4>
         <div />
         <div>
-          <form className="App" onSubmit={this.onSubmit}>
+          <form className="submitMenu" onSubmit={this.onSubmit}>
             <input value={this.state.term} onChange={this.newUseronChange} />
             <button>Add User</button>
           </form>
@@ -135,6 +136,7 @@ class App extends Component {
             Add to Group
           </button>
           <div>{this.listLogic()}</div>
+        </div>
         </div>
       </div>
     );

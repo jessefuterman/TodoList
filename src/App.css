@@ -47,9 +47,16 @@
 }
 
 html {
-  background-color: rgb(83, 83, 117);
+  background-color: rgb(43, 43, 116);
 }
 
+
+.submitMenu {
+  text-align: center;
+  top: 130px;
+  position: absolute;
+
+}
 .buttonTwo {
   background: #3498db;
   width: 35px;
@@ -92,11 +99,9 @@ html {
   flex-direction: column;
 }
 .Dropdown-menuTwo {
-  position: absolute;
-  position: -webkit-sticky;
   position: fixed;
-  left: 0px;
-  bottom: 325px;
+  left: 20px;
+     bottom: 400px
 }
 
 .App-logo {
@@ -112,9 +117,10 @@ html {
   left: 500px;
   font-size: 15px;
   position: absolute;
+  display: flex;
 }
 .NameListTwo {
-  flex-direction: column;
+
 
   align-content: center;
 
@@ -122,7 +128,7 @@ html {
   color: white;
   font-size: 15px;
   display: inline-flex;
-  position: absolute;
+  
   top: 250px;
   margin-top: 40px;
 }
