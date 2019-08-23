@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       text: "",
       selectedOption: "LatinJazzFans",
+      submitUser: [],
       items: [],
       pushedUser: [],
       submitUserArray: [],
@@ -72,11 +73,7 @@ class App extends Component {
 
   triggerGroup = () => {
     if (this.state.selectedOption === "LatinJazzFans") {
-      // this.passingGroup()
-      // this.setState({
-      //   groups: this.state.users[0].push(this.state.groupLatinJazz.LatinJazzFans)
-      // });
-      // console.log(this.state.users)
+      
       this.LatinJazzFans();
     }
 
@@ -126,7 +123,24 @@ class App extends Component {
     return mapOne;
   };
 
+
+
+  onChange = (event) => {
+    this.setState({ term: event.target.value });
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault();
+    this.setState({
+      term: '',
+      items: [...this.state.items, this.state.term],
+      
+    });
+  }
+
   render() {
+    console.log(this.state.items)
+
     console.log(this.state, "this.state");
     return (
       <div className="NameList">
@@ -137,6 +151,12 @@ class App extends Component {
       <h4 className="App">Music Fans Unite</h4>
         <div>
          
+        </div>
+        <div>
+        <form className="App" onSubmit={this.onSubmit}>
+        <input value={this.state.term} onChange={this.onChange} />
+        <button>Add User</button>
+      </form>
         </div>
         <div>
           <select
