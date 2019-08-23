@@ -93,13 +93,12 @@ html {
   height: 20x;
   bottom: 40px;
   left: 50px;
-  display: inline-flex;
-
+ 
   margin-top: 40px;
   flex-direction: column;
 }
 .Dropdown-menuTwo {
-  position: fixed;
+ 
   left: 20px;
      bottom: 400px
 }
@@ -120,7 +119,7 @@ html {
   display: flex;
 }
 .NameListTwo {
-
+  flex-direction: column;
 
   align-content: center;
 
