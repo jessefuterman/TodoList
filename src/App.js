@@ -35,13 +35,7 @@ class App extends Component {
   }
 
   onChange = event => {
-    let filterResult = this.state.pushedUser.filter(elem => {
-      if (elem !== event.target.name) {
-        return true;
-      } else {
-        return false;
-      }
-    });
+    let filterResult = this.state.pushedUser.filter(elem =>  elem !== event.target.name);
 
     if (filterResult.length < this.state.pushedUser.length) {
       this.setState({ pushedUser: filterResult });
@@ -72,7 +66,7 @@ class App extends Component {
   };
 
   handleDelete = (elem, str) => {
-    console.log("we in delete?");
+   
     let del = this.state.users.filter(x => x !== elem);
     let users = this.state.users;
     users = del;
@@ -106,7 +100,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state, "this.state");
     return (
       <div className="NameList">
         <Groups

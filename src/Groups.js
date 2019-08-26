@@ -26,20 +26,21 @@ class Groups extends Component {
   }
 
   triggerGroup = () => {
-    if (this.state.selectedOption === "LatinJazzFans") {
-      this.LatinJazzFans();
-    }
+    this[this.state.selectedOption] && this[this.state.selectedOption]()
+    // if (this.state.selectedOption === "LatinJazzFans") {
+    //   this.LatinJazzFans();
+    // }
 
-    if (this.state.selectedOption === "HouseHeads") {
-      this.HouseHeads();
-    }
+    // if (this.state.selectedOption === "HouseHeads") {
+    //   this.HouseHeads();
+    // }
 
-    if (this.state.selectedOption === "FunkFans") {
-      this.FunkFans();
-    }
-    if (this.state.selectedOption === "JazzCats") {
-      this.JazzCats();
-    }
+    // if (this.state.selectedOption === "FunkFans") {
+    //   this.FunkFans();
+    // }
+    // if (this.state.selectedOption === "JazzCats") {
+    //   this.JazzCats();
+    // }
   };
 
   LatinJazzFans = i => {
